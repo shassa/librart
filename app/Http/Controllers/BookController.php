@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\book;
 use App\Http\Requests\StorebookRequest;
 use App\Http\Requests\UpdatebookRequest;
+use Illuminate\Support\Str;
 
 class BookController extends Controller
 {
@@ -36,7 +37,21 @@ class BookController extends Controller
      */
     public function store(StorebookRequest $request)
     {
-        //
+        $images=array();
+        if($files=$request->file('images')){
+            foreach($files as $file){
+                $name=$file->getClientOriginalName();
+                $file->move('image',$name);
+                $images[]=$name;
+            }
+        }
+        $arr=$request->validated();
+        $arr['images']=implode("|",$images);
+
+        $arr['isbn']=Str::random(7);
+        $book=book::create($arr);
+        $books=book::all();
+        return view('admin.books',compact('books'))->with('successMsg','Your book Add');
     }
 
     /**
