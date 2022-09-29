@@ -6,6 +6,11 @@ use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Models\book;
+use App\Models\User;
+use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class OrderController extends Controller
 {
@@ -85,5 +90,16 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         //
+    }
+
+    public function user_orders(Request $request)
+    {
+        if (Session::has('lang')=='ar'){
+            $lang='ar';
+        }else{$lang='en';}
+        $user=User::find(2);
+        // dd($user);
+        $books=$user->books()->get();
+        return view('wepsit.orders',compact('books','lang'));
     }
 }

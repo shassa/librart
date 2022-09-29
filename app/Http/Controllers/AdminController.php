@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
 use App\Models\book;
 use App\Models\Order;
 use App\Models\User;
@@ -68,5 +69,16 @@ class AdminController extends Controller
         $orders=Order::all();
 
         return view('admin.orders',compact('orders'))->with('successMsg','You refuse the order');
+    }
+
+    public function login(LoginRequest $request)
+    {
+        $user=auth()->attempt($request->only('email','password'));
+        if($user){
+            if(auth()->role ==1){
+            return redirect('/admin');}
+            return redirect('/home');
+        }
+            return redirect('/')->with('successMsg','user not exist');
     }
 }

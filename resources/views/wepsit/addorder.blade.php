@@ -5,10 +5,10 @@
     <form  method="post" action="{{route('order')}}">
         @csrf
       <div class="input-group input-group-outline mb-3">
-        <input type="text" class="form-control" name="book_id" required placeholder="Arabic Title">
+        <input type="text" class="form-control" name="book_id" required placeholder="book_id">
       </div>
       <div class="input-group input-group-outline mb-3">
-        <input type="text" class="form-control" name="user_id" required placeholder="English Title">
+        <input type="text" class="form-control" name="user_id" required placeholder="user_id">
       </div>
       
       <div class="text-center">

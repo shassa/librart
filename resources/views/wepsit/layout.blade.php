@@ -26,7 +26,7 @@
         <ul class="primary">
           <li class="current"><a href="{{route('home')}}">Home</a></li>
           
-          {{-- <li><a href="{{route(login)}}">Join us</a></li> --}}
+          <li><a href="{{route('/')}}">Join us</a></li>
         </ul>
         
       </div>

@@ -18,7 +18,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('wepsit.login');
-});
+})->name('/');
+Route::post('/signin',[AdminController::class,'login'])->name('Signin');
+Route::group(['middleware' => 'admin'], function () {
 
 Route::get('/admin',[AdminController::class,'index']);
 Route::get('/admin/books',[AdminController::class,'books'])->name('books');
@@ -32,8 +34,12 @@ Route::get('/admin/refuse/{id}',[AdminController::class,'refuse_order'])->name('
 Route::get('/admin/images/{id}',[AdminController::class,'images'])->name('images');
 Route::get('/admin/addbook',[AdminController::class,'addbook'])->name('addbook');
 Route::post('/admin/addbook',[BookController::class,'store'])->name('storebook');
+
+});
 // /////////////////////////////////////////////////////////
 Route::get('/order',[OrderController::class,'index']);
+Route::get('/orders',[OrderController::class,'user_orders']);
+
 Route::get('/home',[BookController::class,'index'])->name('home');
 
 Route::post('/order',[OrderController::class,'store'])->name('order');
