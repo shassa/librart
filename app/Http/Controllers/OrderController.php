@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
+use App\Models\book;
 
 class OrderController extends Controller
 {
@@ -15,7 +16,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        return view('wepsit.addorder');
     }
 
     /**
@@ -36,7 +37,9 @@ class OrderController extends Controller
      */
     public function store(StoreOrderRequest $request)
     {
-        //
+       $book=book::find($request->book_id);
+       $book->users()->attach([$request->user_id]);
+       return "succesd";
     }
 
     /**
