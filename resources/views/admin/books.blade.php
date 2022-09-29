@@ -42,13 +42,13 @@
               <div class="d-flex flex-column justify-content-center">
                 <h2 class="mb-0 text-sm">{{$item->author}}</h2>
               </div>            </td>
-            <td class="align-middle">
+            <td class="align-right">
               <div class="d-flex flex-column justify-content-center">
                 <h2 class="mb-0 text-sm ">{{$item->isbn }}</h2>
 
                 </div>
             </td>
-            <td class="align-middle">
+            <td class="align-left">
                 <div class="progress-wrapper w-75 mx-auto">
                   <div class="progress-info">
                     <div class="d-flex flex-column justify-content-center">

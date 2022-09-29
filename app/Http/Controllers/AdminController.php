@@ -46,6 +46,13 @@ class AdminController extends Controller
 
         return view('admin.orders',compact('orders'));
     }
+    public function tags()
+    {
+        $tags=book::with('tags')->get();
+    //    print_r($tags);
+       $lang='en';
+        return view('admin.tags',compact('tags','lang'));
+    }
 
     public function accept_order($id)
     {
@@ -53,5 +60,13 @@ class AdminController extends Controller
         $orders=Order::all();
 
         return view('admin.orders',compact('orders'))->with('successMsg','You accept the order');
+    }
+
+    public function refuse_order($id)
+    {
+        Order::find($id)->update(['accept'=>0]);
+        $orders=Order::all();
+
+        return view('admin.orders',compact('orders'))->with('successMsg','You refuse the order');
     }
 }

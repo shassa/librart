@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\book;
 use App\Http\Requests\StorebookRequest;
 use App\Http\Requests\UpdatebookRequest;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 
 class BookController extends Controller
@@ -16,7 +17,12 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
+        $books=book::all();
+        if (Session::has('lang')=='ar'){
+            $lang='ar';
+        }else{$lang='en';}
+    // print_r($books);
+        return view('wepsit.index',compact('books','lang'));
     }
 
     /**

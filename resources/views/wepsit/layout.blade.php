@@ -24,9 +24,9 @@
       <div id="logo"><a href="index.html"><img src="{{ asset('img/logo.gif')}}" alt=""></a></div>
       <div id="navigation">
         <ul class="primary">
-          <li class="current"><a href="index.html">Home</a></li>
+          <li class="current"><a href="{{route('home')}}">Home</a></li>
           
-          <li><a href="join-us.html">Join us</a></li>
+          {{-- <li><a href="{{route(login)}}">Join us</a></li> --}}
         </ul>
         
       </div>

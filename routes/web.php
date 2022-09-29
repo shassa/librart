@@ -17,20 +17,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('wepsit\layout');
+    return view('wepsit.login');
 });
 
 Route::get('/admin',[AdminController::class,'index']);
-Route::get('/admin/books',[AdminController::class,'books']);
-Route::get('/admin/users',[AdminController::class,'users']);
-Route::get('/admin/orders',[AdminController::class,'orders']);
+Route::get('/admin/books',[AdminController::class,'books'])->name('books');
+Route::get('/admin/users',[AdminController::class,'users'])->name('user');
+Route::get('/admin/tags',[AdminController::class,'tags'])->name('tags');
+
+Route::get('/admin/orders',[AdminController::class,'orders'])->name('orders');
 Route::get('/admin/accept/{id}',[AdminController::class,'accept_order'])->name('accept');
+Route::get('/admin/refuse/{id}',[AdminController::class,'refuse_order'])->name('refuse');
 
 Route::get('/admin/images/{id}',[AdminController::class,'images'])->name('images');
 Route::get('/admin/addbook',[AdminController::class,'addbook'])->name('addbook');
 Route::post('/admin/addbook',[BookController::class,'store'])->name('storebook');
 // /////////////////////////////////////////////////////////
 Route::get('/order',[OrderController::class,'index']);
+Route::get('/home',[BookController::class,'index'])->name('home');
 
 Route::post('/order',[OrderController::class,'store'])->name('order');
 

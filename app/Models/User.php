@@ -23,7 +23,10 @@ class User extends Authenticatable
         'password',
     ];
 
-    
+    public function getRoleAttribute($val)
+    {
+        return $val!=1 ? "user":"Admin";
+    }
 
 
     /**

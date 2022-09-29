@@ -12,10 +12,10 @@
       <table class="table align-items-center mb-0">
         <thead>
           <tr>
-            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Book</th>
-            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">User</th>
-            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">State</th>
-            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
+            <th class=" justify-content-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Book</th>
+            <th class=" justify-content-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">User</th>
+            <th class=" justify-content-center text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">State</th>
+            <th class=" justify-content-center text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
  
           </tr>
         </thead>
@@ -23,7 +23,7 @@
          @foreach ($orders as $item)
              
           <tr>
-            <td>
+            <td class="align-middle text-center text-sm">
               <div class="d-flex px-2 py-1">
                
                 <div class="d-flex flex-column justify-content-center">
@@ -33,20 +33,22 @@
             </td>
           
             <td class="align-middle text-center text-sm">
-              <div class="d-flex flex-column justify-content-center">
+              <div class=" flex-column justify-content-center">
                 <h2 class="mb-0 text-sm">{{$item->user_id}}</h2>
               </div>       
                  </td>
             <td class="align-middle">
-              <div class="d-flex flex-column justify-content-center">
+              <div class="flex-column justify-content-center">
                 <h2 class="mb-0 text-sm ">{{$item->accept}}</h2>
 
                 </div>
             </td>
             <td class="align-middle">
-              <div class="d-flex flex-column justify-content-center">
-               <a href="{{route('accept',$item->id)}}" class="btn btn primary">accept</a>
-                </div>
+              <div class="d-inline flex-column justify-content-center">
+               <a href="{{route('accept',$item->id)}}" class="btn btn primary d-inline">accept</a>
+               <a href="{{route('refuse',$item->id)}}" class="btn btn primary d-inline">refuse</a>
+
+              </div>
             </td>
           </tr>
           @endforeach

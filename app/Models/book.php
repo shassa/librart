@@ -14,6 +14,13 @@ class book extends Model
     public function users(){
         return $this->belongsToMany(User::class,'orders');
     }
+    public function tags(){
+        return $this->hasMany(Tag::class);
+    }
 
+    public function getImagesAttribute($val)
+    {
+        return $val!=null ? explode('|',$val):" ";
+    }
 
 }

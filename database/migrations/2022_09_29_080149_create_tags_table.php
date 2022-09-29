@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('tags', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('book_id')->constrained('books')->onDelete('cascade');
+            $table->string('tag');
             $table->timestamps();
         });
     }
